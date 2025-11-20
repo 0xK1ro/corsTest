@@ -6,15 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-   <script>
-var req = new XMLHttpRequest(); 
-req.onload = function () {
-    alert(this.responseText);
-};
-req.open('GET', 'https://api.paperspace.io/users/3246058', true);
-req.withCredentials = true;
-req.send();
+ <script>
+fetch("https://api.paperspace.io/users/3246058", {
+    method: "GET",
+    credentials: "include"
+})
+.then(r => r.text())
+.then(t => alert(t))
+.catch(e => alert("Error: " + e));
 </script>
+
 
 </body>
 </html>
